@@ -1,9 +1,17 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% if config.extra.profile_picture %}
-<img src="{{ config.extra.profile_picture }}" alt="Profile picture" class="profile-pic">
-{% endif %}
-<article>{{ section.content | safe }}</article>
-
+<article>{{ section.content | safe }}
+    <ul class="p">
+        {% set posts = get_section(path="posts/_index.md") %}
+        {% for post in posts.pages %}
+        <li>
+            <time datetime="{{ post.date }}">{{ post.date | date(format='%Y-%m-%d') }}</time>
+            <a href="{{ post.permalink | safe }}">{{ post.title }}</a>{% if post.draft %} <span
+                class="s">(Draft)</span>{%
+            endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</article>
 {% endblock content %}

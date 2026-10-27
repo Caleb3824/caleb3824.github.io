@@ -1,4 +1,4 @@
-{# OpenGraph and Twitter Card meta tags #}
+{# OpenGraph meta tags #}
 
 {% component og_preview(@config, @current_url = none, @page = none, @section = none, @term = none, @taxonomy = none) %}
 <title>{{ <og_title/> }} | {{ config.title }}</title>
@@ -8,9 +8,6 @@
 <meta property="og:url" content="{{ current_url | safe }}"/>
 <meta property="og:description" content="{{ <og_description/> }}"/>
 {{ <og_image_tags/> }}
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="{{ <og_title/> }}"/>
-<meta name="twitter:description" content="{{ <og_description/> }}"/>
 {% endcomponent og_preview %}
 
 {% component og_description(@config, @page = none, @section = none) %}
